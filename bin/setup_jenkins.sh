@@ -18,7 +18,11 @@ oc -n ${GUID}-jenkins new-app jenkins-persistent \
     --param MEMORY_LIMIT=4Gi \
     --param VOLUME_CAPACITY=4Gi \
     --param DISABLE_ADMINISTRATIVE_MONITORS=true
-    
+
+#Set the resource limits and requests
+
+oc -n ${GUID}-jenkins set resources dc jenkins --limits=memory=4Gi,cpu=2 --requests=memory=2Gi,cpu=500m
+
 # Create custom agent container image with skopeo
 # TBD
 
