@@ -118,7 +118,7 @@ podTemplate(
       }
 
       // Copy Image to Nexus container registry
-	 stage('Copy Image to Nexus container registry') {
+    stage('Copy Image to Nexus container registry') {
      echo "Copy image to Nexus container registry"
      script {
 	      sh "skopeo copy \
