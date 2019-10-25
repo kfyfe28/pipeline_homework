@@ -12,9 +12,13 @@ REPO=$2
 CLUSTER=$3
 echo "Setting up Jenkins in project ${GUID}-jenkins from Git Repo ${REPO} for Cluster ${CLUSTER}"
 
-# Set up Jenkins with sufficient resources
-# TBD
-
+#Create The Jenkins App
+oc -n ${GUID}-jenkins new-app jenkins-persistent \
+    --param ENABLE_OAUTH=true \
+    --param MEMORY_LIMIT=4Gi \
+    --param VOLUME_CAPACITY=4Gi \
+    --param DISABLE_ADMINISTRATIVE_MONITORS=true
+    
 # Create custom agent container image with skopeo
 # TBD
 
